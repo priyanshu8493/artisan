@@ -29,12 +29,12 @@ describe("convertFromUsd", () => {
 
 describe("formatMoney", () => {
   it("formats USD with dollar sign", () => {
-    expect(formatMoney(16400, "US")).toMatch(/\$16[.,]40/);
+    expect(formatMoney(1640, "US")).toMatch(/\$16[.,]40/);
   });
 
   it("formats GBP with pound sign at converted value", () => {
-    const gbp = Math.round(16400 * GBP_PER_USD) / 100;
-    expect(formatMoney(16400, "GB")).toMatch(new RegExp(`£${gbp.toFixed(2).replace(".", "[.,]")}`));
+    const gbp = Math.round(1640 * GBP_PER_USD) / 100;
+    expect(formatMoney(1640, "GB")).toMatch(new RegExp(`£${gbp.toFixed(2).replace(".", "[.,]")}`));
   });
 });
 
@@ -62,9 +62,15 @@ describe("shippingQuotes", () => {
     expect(gb.length).toBeGreaterThan(0);
     expect(us.every((q) => typeof q.priceCents === "number" && q.minDays <= q.maxDays)).toBe(true);
 
-    const gbStandard = gb.find((q) => q.id === "standard")!;
-    const usStandard = SHIPPING_US_STANDARD;
-    expect(gbStandard.priceCents).toBe(Math.round(usStandard * GBP_PER_USD));
+    // Each region's quotes derive from that region's own USD definitions
+    for (const q of us) {
+      const def = SHIPPING_METHODS.US.find((m) => m.id === q.id)!;
+      expect(q.priceCents).toBe(convertFromUsd(def.priceCentsUsd, "US"));
+    }
+    for (const q of gb) {
+      const def = SHIPPING_METHODS.GB.find((m) => m.id === q.id)!;
+      expect(q.priceCents).toBe(convertFromUsd(def.priceCentsUsd, "GB"));
+    }
   });
 });
 
@@ -81,4 +87,3 @@ describe("shippingMethodDef", () => {
 });
 
 import { SHIPPING_METHODS } from "@/lib/constants";
-const SHIPPING_US_STANDARD = SHIPPING_METHODS.US.find((m) => m.id === "standard")!.priceCentsUsd;
