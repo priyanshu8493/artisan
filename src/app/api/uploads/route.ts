@@ -1,5 +1,6 @@
 import { writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { ok, fail, handle } from "@/lib/api";
 import { requireSeller } from "@/lib/auth";
 import { randomUUID } from "node:crypto";
@@ -8,8 +9,10 @@ const MAX_SIZE = 8 * 1024 * 1024; // 8MB
 const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/svg+xml", "video/mp4", "video/webm"];
 
 /**
- * Local disk upload (public/uploads). Swap this handler for S3/Cloudinary
- * in production — the API contract stays the same: multipart form → { url }.
+ * Upload storage. Writes to the OS temp dir (works on read-only serverless
+ * filesystems like Vercel) and serves files back through /api/files/[name].
+ * Swap this handler for S3/Cloudinary in production — the API contract stays
+ * the same: multipart form → { url }. Temp files are ephemeral per instance.
  */
 export async function POST(req: Request) {
   return handle(async () => {
@@ -29,12 +32,11 @@ export async function POST(req: Request) {
       : "webm";
 
     const name = `${Date.now()}-${randomUUID().slice(0, 8)}.${ext}`;
-    const dir = file.type.startsWith("video/") ? "uploads/videos" : "uploads";
-    const fullDir = join(process.cwd(), "public", dir);
-    await mkdir(fullDir, { recursive: true });
+    const dir = join(tmpdir(), "artisan-uploads");
+    await mkdir(dir, { recursive: true });
     const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(join(fullDir, name), buffer);
+    await writeFile(join(dir, name), buffer);
 
-    return ok({ url: `/${dir}/${name}` }, { status: 201 });
+    return ok({ url: `/api/files/${name}` }, { status: 201 });
   });
 }

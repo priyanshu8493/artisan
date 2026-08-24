@@ -8,11 +8,22 @@ Built with **Next.js 15 (App Router) · React 19 · TypeScript · Prisma · Tail
 
 ## Quick start
 
+The schema ships configured for **PostgreSQL/Neon** (the deployment target).
+
 ```bash
 npm install
-npm run db:push     # create dev.db from prisma/schema.prisma
+# Put your Neon connection string in .env → DATABASE_URL="postgresql://…"
+npm run db:push     # sync schema to the database
 npm run db:seed     # demo sellers, products, orders, reviews, coupons, analytics
 npm run dev         # http://localhost:3000
+```
+
+For fully offline development you can switch Prisma back to SQLite —
+`dev.db` is git-ignored and local-only:
+
+```bash
+npm run db:switch:sqlite   # provider = "sqlite", DATABASE_URL="file:./dev.db"
+npm run db:push && npm run db:seed
 ```
 
 ### Demo accounts (password `Password123!`)
@@ -77,48 +88,40 @@ prisma/schema.prisma # Portable: SQLite (dev) ↔ PostgreSQL (Neon prod)
 
 ---
 
-## Deploying to Neon (PostgreSQL)
+## Deploying to Neon (Vercel)
 
-The schema avoids SQLite-only types (no enums/Json/scalar lists), so it runs unchanged on Postgres.
+The schema avoids provider-only types (no enums/Json/scalar lists), so it runs unchanged on Postgres. **`prisma/schema.prisma` is committed with `provider = "postgresql"`.**
 
-1. Create a project at [neon.tech](https://neon.tech) and copy the pooled connection string.
+1. Create a project at [neon.tech](https://neon.tech) and copy the **pooled** connection string.
 
-2. Switch the schema provider:
-
-   ```bash
-   npm run db:switch:pg      # provider = "postgresql" in prisma/schema.prisma
-   ```
-
-3. Set environment variables (Vercel or host of choice):
-
-   ```env
-   DATABASE_URL="postgresql://user:pass@ep-xxx-pooler.region.aws.neon.tech/neondb?sslmode=require"
-   AUTH_SECRET="<openssl rand -hex 32>"
-   NEXT_PUBLIC_SITE_URL="https://yourdomain.com"
-   RESEND_API_KEY="..."        # optional but recommended in prod
-   EMAIL_FROM="Artisan Market <orders@yourdomain.com>"
-   ```
-
-4. Push schema and seed:
+2. Push schema + seed it (run locally against Neon):
 
    ```bash
+   # .env → DATABASE_URL="postgresql://…neon.tech/neondb?sslmode=require"
    npm run db:push
-   npm run db:seed            # optional demo data
+   npm run db:seed        # optional demo data
    ```
 
-5. Build & run:
+3. Set environment variables in **Vercel → Project → Settings → Environment Variables** (all environments):
 
-   ```bash
-   npm run build && npm start
-   ```
+   | Key                  | Value                                              |
+   | -------------------- | -------------------------------------------------- |
+   | `DATABASE_URL`       | Neon pooled connection string (`?sslmode=require`) |
+   | `AUTH_SECRET`        | `openssl rand -hex 32` — rotate if ever committed  |
+   | `NEXT_PUBLIC_SITE_URL` | `https://your-app.vercel.app`                    |
+   | `RESEND_API_KEY`     | optional — emails log to console without it        |
 
-6. To return to local development:
+4. Redeploy (`git push` or Vercel dashboard). Build runs `prisma generate && next build` automatically.
+
+5. Working offline again:
 
    ```bash
    npm run db:switch:sqlite
    ```
 
-> On serverless hosts, uploads to `public/uploads` are ephemeral — point `/api/uploads` at S3/Cloudinary before going live.
+> On serverless hosts, uploads go to the instance temp dir and are served via
+> `/api/files/[name]` — fine for demos, but swap `/api/uploads` for S3/Cloudinary
+> before real production use.
 
 ## Roadmap (explicitly deferred)
 

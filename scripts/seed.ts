@@ -347,6 +347,7 @@ async function main() {
   await db.shipmentEvent.deleteMany();
   await db.payment.deleteMany();
   await db.orderItem.deleteMany();
+  await db.order.deleteMany();
   await db.review.deleteMany();
   await db.notification.deleteMany();
   await db.wishlistItem.deleteMany();
