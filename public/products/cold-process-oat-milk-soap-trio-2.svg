@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F3EEE3"/><stop offset="100%" stop-color="#EDE6D6" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/><circle cx="397" cy="1249" r="222" fill="#8A7B5C" opacity="0.74" filter="url(#soft)"/><circle cx="693" cy="858" r="307" fill="#C9BCA0" opacity="0.69" filter="url(#soft)"/><circle cx="546" cy="803" r="294" fill="#EDE6D6" opacity="0.60" filter="url(#soft)"/><circle cx="791" cy="295" r="356" fill="#8A7B5C" opacity="0.38" filter="url(#soft)"/><path d="M 667 1095 Q 652 514 1194 542" stroke="#8A7B5C" stroke-width="19" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 945 388 Q 850 700 548 330" stroke="#C9BCA0" stroke-width="32" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 711 785 Q 462 1247 1074 576" stroke="#8A7B5C" stroke-width="9" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 432 861 Q 311 1341 935 595" stroke="#C9BCA0" stroke-width="18" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 27 1018 Q 118 859 1196 422" stroke="#C9BCA0" stroke-width="15" fill="none" opacity="0.5" stroke-linecap="round"/><g opacity="0.9">
+    <path d="M 515.2824 536.4812785690001
+             C 634.8962 536.4812785690001, 663.603512 695.268, 646.8575800000001 784.1885640013601
+             C 634.8962 860.40619028824, 630.1116480000001 854.054721431, 515.2824 854.054721431
+             C 400.45315200000005 854.054721431, 395.6686000000001 860.40619028824, 383.70722 784.1885640013601
+             C 366.9612880000001 695.268, 395.6686000000001 536.4812785690001, 515.2824 536.4812785690001 Z"
+          fill="#211E1B" opacity="0.82"/>
+    <path d="M 433.94501600000007 638.10478028484 Q 515.2824 587.29302942692 596.6197840000001 638.10478028484"
+          stroke="#EDE6D6" stroke-width="14" fill="none" opacity="0.85"/>
+    <circle cx="515.2824" cy="733.37681314344" r="38" fill="#F3EEE3" opacity="0.25"/>
+  </g>
+</svg>

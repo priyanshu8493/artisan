@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F3EEE3"/><stop offset="100%" stop-color="#EDE6D6" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/><circle cx="592" cy="676" r="472" fill="#8A7B5C" opacity="0.65" filter="url(#soft)"/><circle cx="749" cy="1264" r="400" fill="#C9BCA0" opacity="0.58" filter="url(#soft)"/><circle cx="872" cy="532" r="257" fill="#EDE6D6" opacity="0.50" filter="url(#soft)"/><circle cx="302" cy="586" r="317" fill="#8A7B5C" opacity="0.53" filter="url(#soft)"/><path d="M 161 44 Q 32 677 229 309" stroke="#EDE6D6" stroke-width="25" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 586 1415 Q 103 1408 942 863" stroke="#8A7B5C" stroke-width="28" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 718 376 Q 870 1316 620 919" stroke="#8A7B5C" stroke-width="21" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 567 492 Q 219 622 701 702" stroke="#EDE6D6" stroke-width="27" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 1038 463 Q 948 465 834 1059" stroke="#EDE6D6" stroke-width="30" fill="none" opacity="0.5" stroke-linecap="round"/><g opacity="0.9">
+    <path d="M 585.168 647.149206045
+             C 687.445 647.149206045, 711.99148 783.936, 697.6727000000001 860.5366046148
+             C 687.445 926.1942657132, 683.35392 920.722793955, 585.168 920.722793955
+             C 486.98208 920.722793955, 482.891 926.1942657132, 472.6633 860.5366046148
+             C 458.34452 783.936, 482.891 647.149206045, 585.168 647.149206045 Z"
+          fill="#211E1B" opacity="0.82"/>
+    <path d="M 515.61964 734.6927541762001 Q 585.168 690.9209801106 654.71636 734.6927541762001"
+          stroke="#EDE6D6" stroke-width="14" fill="none" opacity="0.85"/>
+    <circle cx="585.168" cy="816.7648305492" r="33" fill="#F3EEE3" opacity="0.25"/>
+  </g>
+</svg>

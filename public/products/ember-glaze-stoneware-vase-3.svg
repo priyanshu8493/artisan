@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F1E8DC"/><stop offset="100%" stop-color="#E7DACA" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/><circle cx="787" cy="691" r="366" fill="#C4623A" opacity="0.38" filter="url(#soft)"/><circle cx="1034" cy="705" r="361" fill="#E08A63" opacity="0.59" filter="url(#soft)"/><circle cx="372" cy="607" r="260" fill="#E7DACA" opacity="0.38" filter="url(#soft)"/><path d="M 1090 655 Q 53 652 525 1146" stroke="#E08A63" stroke-width="29" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 847 345 Q 919 119 476 893" stroke="#E7DACA" stroke-width="28" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 1184 531 Q 332 1137 455 1095" stroke="#E08A63" stroke-width="12" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 1189 746 Q 920 883 398 584" stroke="#C4623A" stroke-width="28" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 1144 127 Q 288 263 69 696" stroke="#C4623A" stroke-width="18" fill="none" opacity="0.5" stroke-linecap="round"/><g opacity="0.9">
+    <path d="M 548.5848 513.5850113625
+             C 672.82465 513.5850113625, 702.642214 672.0840000000001, 685.2486349999999 760.8434336370001
+             C 672.82465 836.922948183, 667.855056 830.5829886375001, 548.5848 830.5829886375001
+             C 429.31454399999996 830.5829886375001, 424.34495 836.922948183, 411.92096499999997 760.8434336370001
+             C 394.527386 672.0840000000001, 424.34495 513.5850113625, 548.5848 513.5850113625 Z"
+          fill="#211E1B" opacity="0.82"/>
+    <path d="M 464.101702 615.0243640905001 Q 548.5848 564.3046877265001 633.067898 615.0243640905001"
+          stroke="#E7DACA" stroke-width="14" fill="none" opacity="0.85"/>
+    <circle cx="548.5848" cy="710.123757273" r="40" fill="#F1E8DC" opacity="0.25"/>
+  </g>
+</svg>

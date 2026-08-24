@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5EDDD"/><stop offset="100%" stop-color="#EFE3D3" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/><circle cx="205" cy="579" r="281" fill="#B98A38" opacity="0.69" filter="url(#soft)"/><circle cx="646" cy="211" r="293" fill="#D9B36A" opacity="0.44" filter="url(#soft)"/><circle cx="926" cy="221" r="277" fill="#EFE3D3" opacity="0.37" filter="url(#soft)"/><circle cx="981" cy="686" r="186" fill="#B98A38" opacity="0.68" filter="url(#soft)"/><circle cx="705" cy="1221" r="376" fill="#D9B36A" opacity="0.65" filter="url(#soft)"/><path d="M 324 502 Q 282 458 579 343" stroke="#B98A38" stroke-width="10" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 572 738 Q 333 1306 430 1156" stroke="#EFE3D3" stroke-width="32" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 168 1448 Q 927 400 349 678" stroke="#EFE3D3" stroke-width="15" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 796 1258 Q 606 225 818 786" stroke="#D9B36A" stroke-width="34" fill="none" opacity="0.5" stroke-linecap="round"/><g opacity="0.9">
+    <path d="M 513.3264 595.936899726
+             C 648.3036000000001 595.936899726, 680.698128 789.669, 661.80132 898.15897615344
+             C 648.3036000000001 991.15038428496, 642.9045120000001 983.401100274, 513.3264 983.401100274
+             C 383.748288 983.401100274, 378.3492 991.15038428496, 364.85148000000004 898.15897615344
+             C 345.954672 789.669, 378.3492 595.936899726, 513.3264 595.936899726 Z"
+          fill="#211E1B" opacity="0.82"/>
+    <path d="M 421.54190400000005 719.92544390136 Q 513.3264 657.93117181368 605.110896 719.92544390136"
+          stroke="#B98A38" stroke-width="14" fill="none" opacity="0.85"/>
+    <circle cx="513.3264" cy="836.16470406576" r="43" fill="#F5EDDD" opacity="0.25"/>
+  </g>
+</svg>

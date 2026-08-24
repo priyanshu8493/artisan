@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F1E8DC"/>
+  <circle cx="265.0032" cy="230.72480000000002" r="104.27680000000001" fill="#C4623A" opacity="0.65" filter="url(#a)"/>
+  <circle cx="164.34879999999998" cy="230.876" r="52.951" fill="#2F4A3E" opacity="0.6" filter="url(#a)"/>
+  <defs><filter id="a"><feGaussianBlur stdDeviation="24"/></filter></defs>
+  <path d="M 200 130 C 245 130 255 175 235 205 C 275 215 290 260 290 310 L 110 310 C 110 260 125 215 165 205 C 145 175 155 130 200 130 Z" fill="#211E1B" opacity="0.8"/>
+</svg>

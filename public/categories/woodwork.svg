@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs><filter id="b"><feGaussianBlur stdDeviation="40"/></filter></defs>
+  <rect width="800" height="800" fill="#EFE3D3"/><circle cx="637" cy="537" r="289" fill="#5C4028" opacity="0.49" filter="url(#b)"/><circle cx="574" cy="505" r="182" fill="#8A6642" opacity="0.43" filter="url(#b)"/><circle cx="701" cy="787" r="310" fill="#DCCBB2" opacity="0.46" filter="url(#b)"/><circle cx="700" cy="1" r="299" fill="#5C4028" opacity="0.71" filter="url(#b)"/><circle cx="330" cy="516" r="315" fill="#8A6642" opacity="0.51" filter="url(#b)"/><path d="M 240 544 C 336 240, 464 240, 560 544 Z" fill="#211E1B" opacity="0.78"/></svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5EDDD"/><stop offset="100%" stop-color="#EFE3D3" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/><circle cx="180" cy="1267" r="280" fill="#B98A38" opacity="0.41" filter="url(#soft)"/><circle cx="181" cy="392" r="491" fill="#D9B36A" opacity="0.69" filter="url(#soft)"/><circle cx="709" cy="1061" r="246" fill="#EFE3D3" opacity="0.48" filter="url(#soft)"/><circle cx="489" cy="609" r="478" fill="#B98A38" opacity="0.71" filter="url(#soft)"/><circle cx="381" cy="1067" r="480" fill="#D9B36A" opacity="0.44" filter="url(#soft)"/><path d="M 894 445 Q 71 1146 414 1342" stroke="#EFE3D3" stroke-width="14" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 65 969 Q 516 1286 1179 295" stroke="#D9B36A" stroke-width="10" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 968 456 Q 815 1144 698 916" stroke="#B98A38" stroke-width="32" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 786 73 Q 379 19 302 1288" stroke="#B98A38" stroke-width="16" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 1099 1 Q 190 1337 1117 1433" stroke="#D9B36A" stroke-width="23" fill="none" opacity="0.5" stroke-linecap="round"/><g opacity="0.9">
+    <path d="M 555.2904 377.69448607975005
+             C 691.21985 377.69448607975005, 723.8429179999999 601.59, 704.812795 726.9714877953401
+             C 691.21985 834.4413344770601, 685.7826719999999 825.48551392025, 555.2904 825.48551392025
+             C 424.798128 825.48551392025, 419.36095 834.4413344770601, 405.76800499999996 726.9714877953401
+             C 386.737882 601.59, 419.36095 377.69448607975005, 555.2904 377.69448607975005 Z"
+          fill="#211E1B" opacity="0.82"/>
+    <path d="M 462.85837399999997 520.98761498871 Q 555.2904 449.34105053423 647.722426 520.98761498871"
+          stroke="#EFE3D3" stroke-width="14" fill="none" opacity="0.85"/>
+    <circle cx="555.2904" cy="655.32492334086" r="43" fill="#F5EDDD" opacity="0.25"/>
+  </g>
+</svg>

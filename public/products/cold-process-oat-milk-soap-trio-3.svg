@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F3EEE3"/><stop offset="100%" stop-color="#EDE6D6" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/><circle cx="927" cy="479" r="452" fill="#8A7B5C" opacity="0.36" filter="url(#soft)"/><circle cx="421" cy="1207" r="490" fill="#C9BCA0" opacity="0.37" filter="url(#soft)"/><circle cx="633" cy="1152" r="293" fill="#EDE6D6" opacity="0.47" filter="url(#soft)"/><path d="M 431 1 Q 745 1277 288 83" stroke="#8A7B5C" stroke-width="28" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 458 44 Q 759 872 617 111" stroke="#EDE6D6" stroke-width="21" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 1159 1109 Q 243 859 770 843" stroke="#8A7B5C" stroke-width="22" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M 975 1041 Q 960 772 410 1498" stroke="#C9BCA0" stroke-width="15" fill="none" opacity="0.5" stroke-linecap="round"/><g opacity="0.9">
+    <path d="M 493.704 588.1590397159999
+             C 598.6018 588.1590397159999, 623.777272 724.608, 609.09158 801.0194177590399
+             C 598.6018 866.5149186953599, 594.405888 861.056960284, 493.704 861.056960284
+             C 393.002112 861.056960284, 388.8062 866.5149186953599, 378.31642 801.0194177590399
+             C 363.630728 724.608, 388.8062 588.1590397159999, 493.704 588.1590397159999 Z"
+          fill="#211E1B" opacity="0.82"/>
+    <path d="M 422.373496 675.48637429776 Q 493.704 631.8227070068799 565.034504 675.48637429776"
+          stroke="#EDE6D6" stroke-width="14" fill="none" opacity="0.85"/>
+    <circle cx="493.704" cy="757.35575046816" r="34" fill="#F3EEE3" opacity="0.25"/>
+  </g>
+</svg>
