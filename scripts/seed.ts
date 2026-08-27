@@ -407,6 +407,16 @@ async function main() {
     sellerIdBySlug[s.slug] = profile.id;
   }
 
+  // Marketplace owner / admin account
+  await db.user.create({
+    data: {
+      email: "rajibdgp2011@gmail.com",
+      passwordHash: await bcrypt.hash("Admin@1234", 12),
+      name: "Rajib",
+      role: "ADMIN",
+    },
+  });
+
   // Demo customer accounts
   const customerIds: { id: string; email: string; name: string }[] = [];
   for (const c of CUSTOMERS) {
@@ -577,9 +587,10 @@ async function main() {
   });
 
   console.log(`Seeded: ${SELLERS.length} sellers, ${PRODUCTS.length} products, ${CUSTOMERS.length} customers.`);
-  console.log("Logins (password: Password123!):");
-  console.log("  seller   → maya@artisans.market");
-  console.log("  customer → customer@demo.com");
+  console.log("Logins:");
+  console.log("  admin    → rajibdgp2011@gmail.com / Admin@1234");
+  console.log("  seller   → maya@artisans.market / Password123!");
+  console.log("  customer → customer@demo.com / Password123!");
 }
 
 main()

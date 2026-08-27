@@ -11,6 +11,7 @@
     "test": "vitest run",
     "db:push": "prisma db push && prisma generate",
     "db:seed": "tsx scripts/seed.ts",
+    "db:admin": "tsx scripts/ensure-admin.ts",
     "db:reset": "node -e \"const fs=require('fs');for(const f of ['prisma/dev.db','prisma/dev.db-journal'])try{fs.rmSync(f)}catch{}\" && prisma db push && tsx scripts/seed.ts",
     "db:switch:pg": "node scripts/switch-provider.mjs postgresql && prisma generate",
     "db:switch:sqlite": "node scripts/switch-provider.mjs sqlite && prisma generate",

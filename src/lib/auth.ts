@@ -96,6 +96,11 @@ export async function requireRole(...roles: string[]): Promise<SessionUser> {
   return user;
 }
 
+/** Admin only — used across /api/admin routes */
+export async function requireAdmin(): Promise<SessionUser> {
+  return requireRole("ADMIN");
+}
+
 /** Seller or admin — used across /api/seller routes */
 export async function requireSeller() {
   const sessionUser = await requireRole("SELLER", "ADMIN");

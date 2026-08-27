@@ -29,7 +29,7 @@ function LoginForm() {
       toast.success(`Welcome back, ${data.name.split(" ")[0]}!`);
       const dest =
         next ||
-        (data.role === "SELLER" || data.role === "ADMIN" ? "/seller" : "/");
+        (data.role === "ADMIN" ? "/admin" : data.role === "SELLER" ? "/seller" : "/");
       router.push(dest);
       router.refresh();
     } catch (err) {
@@ -83,6 +83,7 @@ function LoginForm() {
         </button>
 
         <div className="rounded-md bg-sand/70 px-4 py-3 text-xs leading-relaxed text-[rgb(var(--muted))] dark:bg-charcoal-soft/50">
+          <strong>Admin:</strong> rajibdgp2011@gmail.com / <code>Admin@1234</code><br />
           <strong>Demo accounts</strong> (password: <code>Password123!</code>)<br />
           Seller: maya@artisans.market · Customer: customer@demo.com
         </div>

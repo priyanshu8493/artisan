@@ -26,12 +26,17 @@ npm run db:switch:sqlite   # provider = "sqlite", DATABASE_URL="file:./dev.db"
 npm run db:push && npm run db:seed
 ```
 
-### Demo accounts (password `Password123!`)
+### Demo accounts
 
-| Role     | Email                    |
-| -------- | ------------------------ |
-| Seller   | `maya@artisans.market`   |
-| Customer | `customer@demo.com`      |
+| Role     | Email                    | Password     | Area        |
+| -------- | ------------------------ | ------------ | ----------- |
+| Admin    | `rajibdgp2011@gmail.com` | `Admin@1234` | `/admin`    |
+| Seller   | `maya@artisans.market`   | `Password123!` | `/seller` |
+| Customer | `customer@demo.com`      | `Password123!` | storefront |
+
+> **Admin**: the marketplace owner signs in at `/login` and is routed to `/admin`,
+> where they can manage all listings, orders, categories, sellers, customers and
+> reviews. Change the default password under **Admin → Profile**.
 
 Demo coupons: **WELCOME10** (10% off) · **HANDMADE20** ($20 off $100+).
 
@@ -45,7 +50,8 @@ Demo coupons: **WELCOME10** (10% off) · **HANDMADE20** ($20 off $100+).
 | `npm test`            | Vitest unit tests                              |
 | `npm run typecheck`   | `tsc --noEmit`                                 |
 | `npm run db:push`     | Sync schema to database                        |
-| `npm run db:seed`     | Reseed demo data                               |
+| `npm run db:seed`     | Reseed demo data (includes the admin account)  |
+| `npm run db:admin`    | Idempotently create/update the admin account   |
 | `npm run db:reset`    | Drop, push, reseed                             |
 | `npm run db:switch:pg` / `db:switch:sqlite` | Toggle provider for deploy/dev |
 
@@ -56,16 +62,18 @@ Demo coupons: **WELCOME10** (10% off) · **HANDMADE20** ($20 off $100+).
 ```
 src/
   app/
-    (shop)/          # Storefront: home, catalog, PDP, cart, checkout,
-                     #   orders/[orderNumber], account/*, wishlist,
-                     |   artisans/*, legal, contact
+     (shop)/          # Storefront: home, catalog, PDP, cart, checkout,
+                      #   orders/[orderNumber], account/*, wishlist,
+                      |   artisans/*, legal, contact
     seller/          # Dashboard: home, products (+ new/edit), orders (+ detail),
                      #   analytics, reviews, messages, settings — role-guarded in layout + middleware
+    admin/           # Owner dashboard: overview, products, orders, categories,
+                     #   sellers, customers, reviews, profile (password) — ADMIN-only
     api/             # Route handlers: auth, products, orders (checkout),
                      #   account, reviews, coupons, newsletter, analytics,
-                     |   support, uploads, seller/*
+                     |   support, uploads, seller/*, admin/*
     sitemap.ts robots.ts
-  components/        # ui/ design system · shop/ storefront · seller/ dashboard
+  components/        # ui/ design system · shop/ storefront · seller/ & admin/ dashboards
   lib/               # constants, money (FX/tax/shipping), auth (JWT sessions),
                      #   api helpers, validators (zod), email, rate-limit, db
   hooks/ store/      # TanStack Query hooks · zustand cart (persisted)
@@ -81,7 +89,8 @@ prisma/schema.prisma # Portable: SQLite (dev) ↔ PostgreSQL (Neon prod)
 - **Server-authoritative checkout**: `/api/orders` re-prices every item from the DB, validates stock, and decrements transactionally with a `StockLog` entry. Client prices are never trusted.
 - **Payments are stubbed for Stripe**: `Payment.provider = "manual"`, refund op flips payment status + logs a `ShipmentEvent`. Wire real charges into `/api/orders`.
 - **Uploads go to local disk** (`public/uploads`, 8 MB cap) via a swappable handler — swap for S3/Cloudinary keeping the same multipart → `{ url }` contract.
-- **Sessions** are signed JWTs (`jose`) in an httpOnly cookie; role is embedded so edge middleware can gate `/seller` without a DB hit.
+- **Sessions** are signed JWTs (`jose`) in an httpOnly cookie; role is embedded so edge middleware can gate `/seller` and `/admin` without a DB hit.
+- **Admin** is role-gated twice — middleware (edge) and `requireAdmin()` in every `/api/admin` handler — and can manage listings, orders, categories, sellers, customers, reviews, and change its own password via the existing account endpoints.
 - **Region** (US/GB) resolves from geo headers → `region` cookie; drives currency, VAT/state tax, shipping methods, address validation.
 - **Rate limiting** (login/register/newsletter) uses an in-memory fixed window — swap the Map in `lib/rate-limit.ts` for Redis on multi-instance deployments.
 - **Emails** print to console unless `RESEND_API_KEY` is set.
@@ -128,4 +137,4 @@ The schema avoids provider-only types (no enums/Json/scalar lists), so it runs u
 - Stripe Checkout + webhooks (order flow already reserves the seam)
 - OAuth sign-in (Google/Apple), 2FA, login history
 - Redis caching/rate-limit backend, Sentry monitoring
-- Admin panel, live chat, mobile app APIs
+- Live chat, mobile app APIs

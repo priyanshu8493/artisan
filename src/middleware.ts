@@ -36,6 +36,8 @@ export async function middleware(req: NextRequest) {
 
   const isSellerArea =
     pathname.startsWith("/seller") || pathname.startsWith("/api/seller");
+  const isAdminArea =
+    pathname.startsWith("/admin") || pathname.startsWith("/api/admin");
   const isAccountArea =
     pathname.startsWith("/account") ||
     pathname.startsWith("/wishlist") ||
@@ -43,7 +45,7 @@ export async function middleware(req: NextRequest) {
 
   let res: NextResponse;
 
-  if ((isSellerArea || isAccountArea) && !role) {
+  if ((isSellerArea || isAccountArea || isAdminArea) && !role) {
     if (pathname.startsWith("/api/")) {
       res = NextResponse.json({ error: "Sign in required." }, { status: 401 });
     } else {
@@ -52,6 +54,12 @@ export async function middleware(req: NextRequest) {
       res = NextResponse.redirect(url);
     }
   } else if (isSellerArea && role && !["SELLER", "ADMIN"].includes(role)) {
+    if (pathname.startsWith("/api/")) {
+      res = NextResponse.json({ error: "Not authorized." }, { status: 403 });
+    } else {
+      res = NextResponse.redirect(new URL("/", req.url));
+    }
+  } else if (isAdminArea && role !== "ADMIN") {
     if (pathname.startsWith("/api/")) {
       res = NextResponse.json({ error: "Not authorized." }, { status: 403 });
     } else {
@@ -75,9 +83,11 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
+    "/admin/:path*",
     "/seller/:path*",
     "/account/:path*",
     "/wishlist/:path*",
+    "/api/admin/:path*",
     "/api/seller/:path*",
     "/api/account/:path*",
     "/((?!_next/static|_next/image|favicon.ico|uploads).*)",
